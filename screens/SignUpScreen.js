@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
 
 export default function SignupScreen({ navigation }) {
+  const [name, setName] = useState('');  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
@@ -10,21 +11,28 @@ export default function SignupScreen({ navigation }) {
   const [medicalConditions, setMedicalConditions] = useState('');
 
   const handleSignup = () => {
-    // Handle the signup logic here
-    console.log({
+    const userData = {
+      name,  // Include the name in the user data
       username,
-      password,
       age,
       gender,
       bloodGroup,
       medicalConditions,
-    });
-    // Navigate back or to a different screen after signup
-    navigation.goBack();
+    };
+    navigation.navigate('Dashboard', { userData });
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.label}>Name</Text> 
+      <TextInput
+        style={styles.input}
+        value={name}
+        onChangeText={setName}
+        placeholder="Enter your name"
+        placeholderTextColor="#ccc"
+      />
+
       <Text style={styles.label}>Username</Text>
       <TextInput
         style={styles.input}

@@ -8,8 +8,19 @@ export default function LoginScreen({ navigation }) {
   const handleLogin = () => {
     // Here you can add your login logic
     console.log({ username, password });
-    // After successful login, navigate to Dashboard
-    navigation.navigate('Dashboard');
+
+    // Example user data (in practice, this should be retrieved from your authentication logic)
+    const userData = {
+      name: 'John Doe',
+      username,
+      age: '25',
+      gender: 'Male',
+      bloodGroup: 'O+',
+      medicalConditions: 'None',
+    };
+
+    // Navigate to Dashboard with userData
+    navigation.navigate('Dashboard', { userData });
   };
 
   return (
